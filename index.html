@@ -1,0 +1,1045 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>رفيق السفر - منصة مواصلات السودان</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;800&display=swap" rel="stylesheet">
+
+  <!-- مكتبة الأيقونات -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <style>
+    :root {
+      --primary: #0f5132;
+      --primary-light: #198754;
+      --accent: #d4af37;
+      --bg: #f8f9fa;
+      --text: #212529;
+      --card-bg: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Tajawal', sans-serif;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* =========================
+       HEADER
+    ========================= */
+
+    header {
+      background: linear-gradient(135deg, #083d27, var(--primary), var(--primary-light));
+      color: #fff;
+      padding: 30px 15px;
+      text-align: center;
+      border-bottom: 4px solid var(--accent);
+    }
+
+    header h1 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      margin-bottom: 5px;
+    }
+
+    header p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+
+    .logo-icon {
+      font-size: 3rem;
+      margin-bottom: 10px;
+      display: block;
+      color: var(--accent);
+      filter: drop-shadow(0 5px 5px rgba(0,0,0,0.4));
+      transform: perspective(300px) rotateX(10deg);
+    }
+
+    /* =========================
+       MAIN
+    ========================= */
+
+    main {
+      max-width: 900px;
+      margin: 20px auto;
+      padding: 0 15px;
+    }
+
+    .form-section,
+    .list-section {
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 25px;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    }
+
+    .form-section h2,
+    .list-section h2 {
+      color: var(--primary);
+      margin-bottom: 20px;
+      font-size: 1.4rem;
+      border-bottom: 2px solid #eee;
+      padding-bottom: 10px;
+    }
+
+    /* =========================
+       ICONS
+    ========================= */
+
+    .heading-icon {
+      color: var(--accent);
+      margin-left: 8px;
+      font-size: 1.2em;
+      filter: drop-shadow(0 3px 2px rgba(0,0,0,0.2));
+    }
+
+    .field-icon {
+      color: var(--primary-light);
+      margin-left: 6px;
+      font-size: 1.1rem;
+      text-shadow: 0 2px 3px rgba(0,0,0,0.15);
+    }
+
+    .gold-icon {
+      color: var(--accent);
+    }
+
+    .whatsapp-icon {
+      color: #fff;
+      font-size: 1.2rem;
+      margin-left: 6px;
+    }
+
+    /* =========================
+       FORM
+    ========================= */
+
+    .row {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 15px;
+      flex-wrap: wrap;
+    }
+
+    .row label {
+      flex: 1;
+      min-width: 220px;
+      display: flex;
+      flex-direction: column;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #333;
+    }
+
+    .row input,
+    .row select {
+      margin-top: 8px;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-family: inherit;
+      background: #fafafa;
+      transition: 0.3s;
+    }
+
+    .row input:focus,
+    .row select:focus {
+      outline: none;
+      border-color: var(--primary-light);
+      background: #fff;
+      box-shadow: 0 0 0 3px rgba(25,135,84,0.12);
+    }
+
+    /* =========================
+       3D BUTTONS
+    ========================= */
+
+    .submit-btn {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(145deg, #198754, #0f5132);
+      color: #fff;
+      border: 1px solid #d4af37;
+      border-radius: 10px;
+      font-size: 1.1rem;
+      font-weight: 800;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: all 0.25s ease;
+      box-shadow:
+        0 6px 0 #083d27,
+        0 9px 15px rgba(0,0,0,0.18),
+        inset 0 1px 2px rgba(255,255,255,0.4);
+      position: relative;
+    }
+
+    .submit-btn:hover {
+      background: linear-gradient(145deg, #20a567, #0f5132);
+      transform: translateY(-3px);
+      box-shadow:
+        0 9px 0 #083d27,
+        0 13px 18px rgba(0,0,0,0.2);
+    }
+
+    .submit-btn:active {
+      transform: translateY(4px);
+      box-shadow:
+        0 2px 0 #083d27,
+        0 4px 8px rgba(0,0,0,0.15);
+    }
+
+    .submit-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* =========================
+       TRIPS LIST
+    ========================= */
+
+    .trips-list {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .trip-card {
+      border: 1px solid #eee;
+      border-radius: 12px;
+      padding: 20px;
+      background: #fff;
+      position: relative;
+      transition: 0.3s;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.03);
+    }
+
+    .trip-card:hover {
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+      transform: translateY(-2px);
+    }
+
+    .trip-card.offer {
+      border-right: 6px solid var(--primary-light);
+    }
+
+    .trip-card.request {
+      border-right: 6px solid #f39c12;
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 10px;
+      gap: 10px;
+    }
+
+    .trip-card h3 {
+      font-size: 1.2rem;
+      color: var(--text);
+      font-weight: 800;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+
+    .badge.free {
+      background: #d1e7dd;
+      color: #0f5132;
+    }
+
+    .badge.paid {
+      background: #fff3cd;
+      color: #856404;
+    }
+
+    .meta-info {
+      display: flex;
+      gap: 15px;
+      font-size: 0.9rem;
+      color: #555;
+      margin-bottom: 15px;
+      background: #f8f9fa;
+      padding: 10px;
+      border-radius: 8px;
+      flex-wrap: wrap;
+    }
+
+    .meta-info i {
+      color: var(--primary-light);
+      margin-left: 5px;
+    }
+
+    /* =========================
+       CARD ACTIONS
+    ========================= */
+
+    .card-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 15px;
+      border-top: 1px solid #eee;
+      padding-top: 15px;
+      flex-wrap: wrap;
+    }
+
+    .btn-action {
+      padding: 10px 15px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      cursor: pointer;
+      border: none;
+      text-decoration: none;
+      flex: 1;
+      min-width: 120px;
+      text-align: center;
+      transition: 0.25s;
+      position: relative;
+    }
+
+    .whatsapp-btn {
+      background: linear-gradient(145deg, #35e477, #128c45);
+      color: #fff;
+      display: none;
+      box-shadow:
+        0 4px 0 #08783a,
+        0 6px 10px rgba(0,0,0,0.15);
+    }
+
+    .whatsapp-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 7px 0 #08783a, 0 9px 14px rgba(0,0,0,0.15);
+    }
+
+    .reveal-btn {
+      background: linear-gradient(145deg, #f1f4f8, #dce3eb);
+      color: #333;
+      box-shadow: 0 4px 0 #b5bdc8, 0 5px 8px rgba(0,0,0,0.1);
+    }
+
+    .reveal-btn:hover {
+      transform: translateY(-2px);
+    }
+
+    /* زر الحذف */
+
+    .delete-btn {
+      background: linear-gradient(145deg, #ff7777, #c82333);
+      color: #fff;
+      box-shadow:
+        0 4px 0 #8e1723,
+        0 6px 10px rgba(0,0,0,0.15);
+    }
+
+    .delete-btn:hover {
+      background: linear-gradient(145deg, #ff5555, #a71d2a);
+      transform: translateY(-3px);
+      box-shadow:
+        0 7px 0 #8e1723,
+        0 9px 12px rgba(0,0,0,0.2);
+    }
+
+    .delete-btn:active {
+      transform: translateY(3px);
+      box-shadow: 0 1px 0 #8e1723;
+    }
+
+    /* =========================
+       TOAST
+    ========================= */
+
+    #toast {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #333;
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-weight: 700;
+      display: none;
+      z-index: 1000;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      text-align: center;
+      width: max-content;
+      max-width: 90%;
+    }
+
+    #toast.success {
+      background: #198754;
+    }
+
+    #toast.error {
+      background: #dc3545;
+    }
+
+    /* =========================
+       RESPONSIVE
+    ========================= */
+
+    @media(max-width: 600px) {
+
+      header h1 {
+        font-size: 1.8rem;
+      }
+
+      .form-section,
+      .list-section {
+        padding: 18px;
+      }
+
+      .row {
+        gap: 10px;
+      }
+
+      .row label {
+        min-width: 100%;
+      }
+
+      .card-header {
+        flex-direction: column;
+      }
+
+      .card-actions {
+        flex-direction: column;
+      }
+
+      .btn-action {
+        width: 100%;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <span class="logo-icon">
+      <i class="fa-solid fa-car-side"></i>
+    </span>
+
+    <h1>رفيق السفر</h1>
+
+    <p>منصة ذكية لتسهيل المواصلات بين المدن السودانية</p>
+  </header>
+
+  <div id="toast"></div>
+
+  <main>
+
+    <!-- =========================
+         FORM SECTION
+    ========================= -->
+
+    <section class="form-section">
+
+      <h2>
+        <i class="fa-solid fa-circle-plus heading-icon"></i>
+        أضف إعلانك الآن
+      </h2>
+
+      <form id="tripForm">
+
+        <div class="row">
+
+          <label>
+            <span>
+              <i class="fa-solid fa-car field-icon"></i>
+              نوع الإعلان
+            </span>
+
+            <select id="type" required onchange="toggleFields()">
+              <option value="offer">لدي مقاعد خالية (سائق)</option>
+              <option value="request">أبحث عن مقعد (مسافر)</option>
+            </select>
+
+          </label>
+
+        </div>
+
+        <div class="row">
+
+          <label>
+            <span>
+              <i class="fa-solid fa-location-dot field-icon"></i>
+              من (الولاية/المدينة)
+            </span>
+
+            <input type="text" id="from" placeholder="مثال: الخرطوم" required>
+          </label>
+
+          <label>
+            <span>
+              <i class="fa-solid fa-location-crosshairs field-icon gold-icon"></i>
+              إلى (الولاية/المدينة)
+            </span>
+
+            <input type="text" id="to" placeholder="مثال: مدني" required>
+          </label>
+
+        </div>
+
+        <div class="row">
+
+          <label>
+            <span>
+              <i class="fa-solid fa-calendar-days field-icon"></i>
+              تاريخ الرحلة
+            </span>
+
+            <input type="date" id="date" required>
+          </label>
+
+        </div>
+
+        <!-- حقول السائق -->
+
+        <div id="driverFields">
+
+          <div class="row">
+
+            <label>
+              <span>
+                <i class="fa-solid fa-chair field-icon"></i>
+                عدد المقاعد
+              </span>
+
+              <input type="number" id="seats" min="1" max="20" value="1">
+            </label>
+
+          </div>
+
+          <div class="row">
+
+            <label>
+              <span>
+                <i class="fa-solid fa-coins field-icon gold-icon"></i>
+                نوع الرحلة
+              </span>
+
+              <select id="cost">
+                <option value="free">مجانًا</option>
+                <option value="paid">بمقابل مادي</option>
+              </select>
+
+            </label>
+
+            <label>
+              <span>
+                <i class="fa-solid fa-money-bill-wave field-icon gold-icon"></i>
+                السعر (اختياري)
+              </span>
+
+              <input type="text" id="price" placeholder="مثال: 5000 ج.س">
+            </label>
+
+          </div>
+
+        </div>
+
+        <div class="row">
+
+          <label>
+            <span>
+              <i class="fa-brands fa-whatsapp field-icon"></i>
+              رقم التواصل (واتساب)
+            </span>
+
+            <input type="tel" id="phone" placeholder="249xxxxxxxxx" required>
+          </label>
+
+          <label>
+            <span>
+              <i class="fa-solid fa-pen-to-square field-icon"></i>
+              ملاحظات (اختياري)
+            </span>
+
+            <input type="text" id="notes" placeholder="مثال: الانطلاق صباحًا">
+          </label>
+
+        </div>
+
+        <button type="submit" class="submit-btn" id="submitBtn">
+          <i class="fa-solid fa-paper-plane"></i>
+          نشر الإعلان
+        </button>
+
+      </form>
+
+    </section>
+
+
+    <!-- =========================
+         TRIPS LIST
+    ========================= -->
+
+    <section class="list-section">
+
+      <h2>
+        <i class="fa-solid fa-route heading-icon"></i>
+        الرحلات المتاحة
+      </h2>
+
+      <div id="tripsList" class="trips-list">
+
+        <p style="text-align:center; color:#888;">
+          جارٍ تحميل الرحلات...
+        </p>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- =========================
+       FIREBASE
+  ========================= -->
+
+  <script type="module">
+
+    import {
+      initializeApp
+    } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+
+    import {
+      getFirestore,
+      collection,
+      addDoc,
+      onSnapshot,
+      query,
+      orderBy,
+      serverTimestamp,
+      deleteDoc,
+      doc
+    } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCsNI342kdzENIsD6_fJNJUaaPWIGQaFV8",
+      authDomain: "transport-dd29b.firebaseapp.com",
+      projectId: "transport-dd29b",
+      storageBucket: "transport-dd29b.firebasestorage.app",
+      messagingSenderId: "733040027721",
+      appId: "1:733040027721:web:de67df74cbb04f59983798"
+    };
+
+
+    const app = initializeApp(firebaseConfig);
+
+    const db = getFirestore(app);
+
+    const tripsRef = collection(db, "trips");
+
+    const toast = document.getElementById("toast");
+
+
+    /* =========================
+       TOAST NOTIFICATIONS
+    ========================= */
+
+    function showToast(msg, type = "success") {
+
+      toast.textContent = msg;
+
+      toast.className = type;
+
+      toast.style.display = "block";
+
+      setTimeout(() => {
+
+        toast.style.display = "none";
+
+      }, 3000);
+
+    }
+
+
+    /* =========================
+       TOGGLE DRIVER FIELDS
+    ========================= */
+
+    window.toggleFields = () => {
+
+      const type = document.getElementById("type").value;
+
+      const driverFields = document.getElementById("driverFields");
+
+      const seatsInput = document.getElementById("seats");
+
+      if (type === "request") {
+
+        driverFields.style.display = "none";
+
+        seatsInput.removeAttribute("required");
+
+      } else {
+
+        driverFields.style.display = "block";
+
+        seatsInput.setAttribute("required", "true");
+
+      }
+
+    };
+
+
+    // ضبط تاريخ اليوم كحد أدنى
+
+    document.getElementById("date").min =
+      new Date().toISOString().split("T")[0];
+
+
+    /* =========================
+       SUBMIT TRIP
+    ========================= */
+
+    document.getElementById("tripForm").addEventListener("submit", async (e) => {
+
+      e.preventDefault();
+
+      const btn = document.getElementById("submitBtn");
+
+      btn.disabled = true;
+
+      btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> جارٍ النشر...';
+
+
+      const type = document.getElementById("type").value;
+
+      const isDriver = type === "offer";
+
+
+      const trip = {
+
+        type: type,
+
+        from: document.getElementById("from").value.trim(),
+
+        to: document.getElementById("to").value.trim(),
+
+        date: document.getElementById("date").value,
+
+        seats: isDriver
+          ? Number(document.getElementById("seats").value)
+          : 0,
+
+        cost: isDriver
+          ? document.getElementById("cost").value
+          : "free",
+
+        price: isDriver
+          ? document.getElementById("price").value.trim()
+          : "",
+
+        phone: document.getElementById("phone").value.trim(),
+
+        notes: document.getElementById("notes").value.trim(),
+
+        createdAt: serverTimestamp()
+
+      };
+
+
+      try {
+
+        await addDoc(tripsRef, trip);
+
+        showToast("تم نشر الإعلان بنجاح!");
+
+        document.getElementById("tripForm").reset();
+
+        toggleFields();
+
+      }
+
+      catch (err) {
+
+        console.error("Publish error:", err);
+
+        showToast("حدث خطأ أثناء نشر الإعلان", "error");
+
+      }
+
+      finally {
+
+        btn.disabled = false;
+
+        btn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> نشر الإعلان';
+
+      }
+
+    });
+
+
+    /* =========================
+       DELETE TRIP
+    ========================= */
+
+    async function deleteTrip(tripId) {
+
+      const confirmed = confirm(
+        "هل أنت متأكد من حذف هذا الإعلان؟\nلا يمكن التراجع عن الحذف بعد تأكيده."
+      );
+
+      if (!confirmed) return;
+
+
+      try {
+
+        await deleteDoc(doc(db, "trips", tripId));
+
+        showToast("تم حذف الرحلة بنجاح!");
+
+      }
+
+      catch (err) {
+
+        console.error("Delete error:", err);
+
+        showToast(
+          "تعذر حذف الرحلة. تحقق من صلاحيات Firebase.",
+          "error"
+        );
+
+      }
+
+    }
+
+
+    /* =========================
+       TRIPS LIST
+    ========================= */
+
+    const q = query(
+      tripsRef,
+      orderBy("createdAt", "desc")
+    );
+
+
+    onSnapshot(q, (snapshot) => {
+
+      const today = new Date().toISOString().split("T")[0];
+
+
+      // فلترة الرحلات القديمة
+
+      const trips = snapshot.docs
+
+        .map(doc => ({
+          id: doc.id,
+          ...doc.data()
+        }))
+
+        .filter(t => t.date >= today);
+
+
+      const list = document.getElementById("tripsList");
+
+
+      if (trips.length === 0) {
+
+        list.innerHTML =
+          '<p style="text-align:center; color:#888;">لا توجد رحلات متاحة حاليًا.</p>';
+
+        return;
+
+      }
+
+
+      list.innerHTML = trips.map(t => {
+
+        const isDriver = t.type === "offer";
+
+
+        const costLabel = !isDriver
+          ? ""
+          : (
+              t.cost === "free"
+                ? "مجانًا"
+                : (t.price ? `بمقابل: ${t.price}` : "بمقابل")
+            );
+
+
+        const phone = String(t.phone || "");
+
+        const hiddenPhone = phone.length > 6
+          ? phone.slice(0, 6) + "***" + phone.slice(-2)
+          : phone;
+
+
+        const safePhone = phone.replace(/[^0-9]/g, "");
+
+
+        return `
+
+          <div class="trip-card ${isDriver ? 'offer' : 'request'}">
+
+            <div class="card-header">
+
+              <h3>
+                <i class="fa-solid fa-location-dot" style="color:#198754;"></i>
+                ${t.from} ← ${t.to}
+              </h3>
+
+              ${
+                isDriver
+                ? `<span class="badge ${t.cost}">
+                     ${costLabel}
+                   </span>`
+                : `<span class="badge" style="background:#fdebd0; color:#b9770e;">
+                     أبحث عن مقعد
+                   </span>`
+              }
+
+            </div>
+
+
+            <div class="meta-info">
+
+              <span>
+                <i class="fa-solid fa-calendar-days"></i>
+                ${t.date}
+              </span>
+
+              ${
+                isDriver
+                ? `<span>
+                     <i class="fa-solid fa-chair"></i>
+                     ${t.seats} مقعد
+                   </span>`
+                : ""
+              }
+
+            </div>
+
+
+            ${
+              t.notes
+              ? `<p style="font-size:0.9rem; margin-bottom:10px;">
+                   <i class="fa-solid fa-note-sticky" style="color:#198754;"></i>
+                   ${t.notes}
+                 </p>`
+              : ""
+            }
+
+
+            <div class="card-actions">
+
+
+              <!-- إظهار رقم الهاتف -->
+
+              <button
+                class="btn-action reveal-btn"
+                type="button"
+                onclick="
+                  this.nextElementSibling.style.display='block';
+                  this.style.display='none';
+                "
+              >
+
+                <i class="fa-solid fa-eye"></i>
+
+                إظهار الرقم (${hiddenPhone})
+
+              </button>
+
+
+              <!-- واتساب -->
+
+              <a
+                class="btn-action whatsapp-btn"
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://wa.me/${safePhone}"
+              >
+
+                <i class="fa-brands fa-whatsapp whatsapp-icon"></i>
+
+                تواصل واتساب
+
+              </a>
+
+
+              <!-- حذف الرحلة -->
+
+              <button
+                class="btn-action delete-btn"
+                type="button"
+                data-delete-id="${t.id}"
+              >
+
+                <i class="fa-solid fa-trash-can"></i>
+
+                حذف الرحلة
+
+              </button>
+
+
+            </div>
+
+          </div>
+
+        `;
+
+      }).join("");
+
+
+    }, (error) => {
+
+      console.error("Loading trips error:", error);
+
+      showToast("تعذر تحميل الرحلات", "error");
+
+    });
+
+
+    /* =========================
+       DELETE BUTTON EVENTS
+    ========================= */
+
+    document.getElementById("tripsList").addEventListener("click", (e) => {
+
+      const deleteButton = e.target.closest("[data-delete-id]");
+
+      if (!deleteButton) return;
+
+      const tripId = deleteButton.dataset.deleteId;
+
+      deleteTrip(tripId);
+
+    });
+
+
+    // إظهار حقول السائق عند فتح الصفحة
+
+    toggleFields();
+
+
+  </script>
+
+</body>
+</html>
