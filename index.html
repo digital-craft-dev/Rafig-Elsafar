@@ -17,34 +17,7 @@
       --card-bg: #ffffff;
       --input-bg: #f4f6f5;
       --text-main: #1e293b;
-      --text-muted: #475569;
-      --border-soft: #e2e8f0;
-      --border-input: #cbd5e1;
-      --meta-bg: #f8fafc;
-      --pill-bg: #f1f5f9;
-      --notes-bg: #fffbeb;
-      --notes-text: #334155;
-      --driver-bg: #f3f8f5;
-      --driver-border: #d1e7dd;
-      --drawer-bg: #ffffff;
       --danger: #dc2626;
-    }
-
-    body.dark-mode {
-      --bg-page: #0b1410;
-      --card-bg: #13221b;
-      --input-bg: #1a2e24;
-      --text-main: #f1f5f9;
-      --text-muted: #cbd5e1;
-      --border-soft: #243d31;
-      --border-input: #2f4f40;
-      --meta-bg: #182a21;
-      --pill-bg: #1d3328;
-      --notes-bg: rgba(212, 175, 55, 0.12);
-      --notes-text: #f8fafc;
-      --driver-bg: #172920;
-      --driver-border: #284638;
-      --drawer-bg: #111f18;
     }
 
     * {
@@ -76,32 +49,9 @@
       border-bottom: 5px solid var(--gold);
       border-bottom-left-radius: 30px;
       border-bottom-right-radius: 30px;
-      box-shadow: 0 8px 20px rgba(15, 81, 50, 0.22);
+      box-shadow: 0 10px 25px rgba(15, 81, 50, 0.25);
       position: relative;
       overflow: hidden;
-    }
-
-    /* زر الثلاثة خطوط الصغير في أعلى اليسار دائماً */
-    .menu-toggle-btn {
-      position: absolute;
-      top: 14px;
-      left: 14px;
-      width: 34px;
-      height: 34px;
-      border-radius: 9px;
-      border: 1.5px solid var(--gold);
-      background: rgba(6, 51, 29, 0.88);
-      color: #ffffff;
-      font-size: 0.95rem;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      z-index: 5;
-    }
-
-    .menu-toggle-btn:hover {
-      background: var(--primary);
     }
 
     .header-content {
@@ -131,7 +81,7 @@
     }
 
     .header-text {
-      text-align: start;
+      text-align: right;
     }
 
     header h1 {
@@ -149,144 +99,6 @@
       text-shadow: 0 1px 4px rgba(0, 0, 0, 0.55);
     }
 
-    /* القائمة الجانبية (Drawer) */
-    .drawer-backdrop {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.5);
-      z-index: 1100;
-      display: none;
-    }
-
-    .drawer-backdrop.open {
-      display: block;
-    }
-
-    .side-drawer {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 280px;
-      max-width: 85vw;
-      height: 100vh;
-      background: var(--drawer-bg);
-      color: var(--text-main);
-      z-index: 1200;
-      box-shadow: 4px 0 24px rgba(0, 0, 0, 0.3);
-      border-right: 3px solid var(--gold);
-      padding: 18px 16px;
-      display: none;
-      flex-direction: column;
-      gap: 12px;
-      overflow-y: auto;
-    }
-
-    .side-drawer.open {
-      display: flex;
-    }
-
-    .drawer-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding-bottom: 12px;
-      border-bottom: 2px solid var(--border-soft);
-    }
-
-    .drawer-title {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 1.1rem;
-      font-weight: 800;
-      color: var(--primary-light);
-    }
-
-    .drawer-close-btn {
-      width: 32px;
-      height: 32px;
-      border-radius: 8px;
-      border: 1px solid var(--border-soft);
-      background: var(--input-bg);
-      color: var(--text-main);
-      font-size: 1rem;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .drawer-item-btn {
-      width: 100%;
-      padding: 12px 13px;
-      border-radius: 12px;
-      border: 1px solid var(--border-soft);
-      background: var(--input-bg);
-      color: var(--text-main);
-      font-size: 0.95rem;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 8px;
-      cursor: pointer;
-    }
-
-    .drawer-item-btn:hover {
-      border-color: var(--primary-light);
-    }
-
-    .drawer-item-left {
-      display: flex;
-      align-items: center;
-      gap: 9px;
-    }
-
-    .drawer-item-left i {
-      width: 30px;
-      height: 30px;
-      border-radius: 8px;
-      background: rgba(25, 135, 84, 0.14);
-      color: var(--primary-light);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .drawer-badge {
-      font-size: 0.78rem;
-      font-weight: 800;
-      padding: 3px 8px;
-      border-radius: 16px;
-      background: rgba(212, 175, 55, 0.18);
-      color: var(--gold);
-      border: 1px solid rgba(212, 175, 55, 0.35);
-    }
-
-    .help-box {
-      padding: 12px;
-      border-radius: 12px;
-      background: var(--notes-bg);
-      border: 1px solid rgba(212, 175, 55, 0.35);
-      color: var(--notes-text);
-      font-size: 0.88rem;
-      line-height: 1.6;
-      display: none;
-    }
-
-    .help-box.show {
-      display: block;
-    }
-
-    .help-box ul {
-      padding-inline-start: 18px;
-      margin-top: 6px;
-    }
-
-    .help-box li {
-      margin-bottom: 5px;
-    }
-
     main {
       max-width: 850px;
       margin: -16px auto 20px;
@@ -301,8 +113,8 @@
       border-radius: 22px;
       padding: 25px;
       margin-bottom: 25px;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
-      border: 1px solid var(--border-soft);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+      border: 1px solid rgba(0, 0, 0, 0.04);
     }
 
     .section-title {
@@ -310,14 +122,14 @@
       align-items: center;
       justify-content: center;
       gap: 10px;
-      color: var(--primary-light);
+      color: var(--primary);
       margin-bottom: 22px;
       font-size: 1.5rem;
       font-weight: 800;
     }
 
     .section-title .icon-box {
-      background: rgba(25, 135, 84, 0.14);
+      background: #e6f4ea;
       color: var(--primary-light);
       width: 38px;
       height: 38px;
@@ -340,14 +152,16 @@
       flex: 1;
       min-width: 240px;
       background: var(--input-bg);
-      border: 1px solid var(--border-soft);
+      border: 1px solid #e2e8f0;
       border-radius: 14px;
       padding: 12px 15px;
+      transition: all 0.25s ease;
     }
 
     .field-card:focus-within {
-      background: var(--card-bg);
+      background: #ffffff;
       border-color: var(--primary-light);
+      box-shadow: 0 0 0 3px rgba(25, 135, 84, 0.12);
     }
 
     .field-header {
@@ -373,7 +187,7 @@
 
     .input-wrapper i.inner-icon {
       position: absolute;
-      inset-inline-end: 12px;
+      left: 12px;
       color: #94a3b8;
       font-size: 0.95rem;
       pointer-events: none;
@@ -382,13 +196,14 @@
     .field-card input, .field-card select {
       width: 100%;
       padding: 10px 12px;
-      padding-inline-end: 35px;
-      border: 1px solid var(--border-input);
+      padding-left: 35px;
+      border: 1px solid #cbd5e1;
       border-radius: 10px;
       font-size: 0.98rem;
       font-weight: 600;
-      background: var(--card-bg);
+      background: #ffffff;
       color: var(--text-main);
+      transition: 0.2s;
     }
 
     .field-card input:focus, .field-card select:focus {
@@ -398,8 +213,8 @@
 
     /* صندوق حقول السائق */
     .driver-box {
-      background: var(--driver-bg);
-      border: 1px solid var(--driver-border);
+      background: linear-gradient(to left, #f8faf9, #eef5f1);
+      border: 1px solid #d1e7dd;
       border-radius: 16px;
       padding: 15px;
       margin-bottom: 15px;
@@ -410,7 +225,7 @@
     }
 
     .driver-box .field-card {
-      background: var(--card-bg);
+      background: #ffffff;
       min-width: 180px;
     }
 
@@ -431,11 +246,14 @@
       font-size: 1.15rem;
       font-weight: 800;
       cursor: pointer;
-      box-shadow: 0 6px 15px rgba(15, 81, 50, 0.25);
+      box-shadow: 0 6px 15px rgba(15, 81, 50, 0.3), inset 0 2px 3px rgba(255,255,255,0.25);
+      transition: all 0.25s ease;
     }
 
     .submit-btn:hover {
+      transform: translateY(-2px);
       background: linear-gradient(180deg, #1ea366 0%, #12613c 100%);
+      box-shadow: 0 8px 20px rgba(15, 81, 50, 0.4);
     }
 
     /* قائمة الرحلات */
@@ -443,12 +261,12 @@
       display: flex;
       align-items: center;
       gap: 10px;
-      color: var(--primary-light);
+      color: var(--primary);
       font-size: 1.35rem;
       font-weight: 800;
       margin-bottom: 20px;
       padding-bottom: 12px;
-      border-bottom: 2px solid var(--border-soft);
+      border-bottom: 2px solid #f1f5f9;
     }
 
     .trips-list {
@@ -458,39 +276,48 @@
     }
 
     .trip-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border-soft);
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
       border-radius: 18px;
       padding: 20px 22px;
       position: relative;
       overflow: hidden;
-      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+      transition: all 0.3s ease;
+    }
+
+    .trip-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
     }
 
     .trip-card.offer {
-      border-inline-end: 6px solid var(--primary-light);
+      border-right: 6px solid var(--primary-light);
     }
 
     .trip-card.request {
-      border-inline-end: 6px solid #f59e0b;
+      border-right: 6px solid #f59e0b;
     }
 
-    /* شارة نوع الرحلة / السعر في الزاوية العلوية اليسرى بدون لخبطة */
-    .status-corner-badge {
+    /* الشريط المائل */
+    .ribbon {
       position: absolute;
-      top: 0;
-      left: 0;
-      padding: 5px 14px;
-      border-bottom-right-radius: 14px;
+      top: 16px;
+      left: -34px;
+      width: 130px;
+      text-align: center;
+      transform: rotate(-45deg);
       font-size: 0.82rem;
       font-weight: 800;
-      color: #ffffff;
+      padding: 4px 0;
+      color: #fff;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
       z-index: 2;
     }
 
-    .status-corner-badge.free { background: #198754; }
-    .status-corner-badge.paid { background: #d97706; }
-    .status-corner-badge.req  { background: #0284c7; }
+    .ribbon.free { background: linear-gradient(90deg, #198754, #20c997); }
+    .ribbon.paid { background: linear-gradient(90deg, #d97706, #f59e0b); }
+    .ribbon.req  { background: linear-gradient(90deg, #0284c7, #38bdf8); }
 
     /* تخطيط جسم البطاقة مع الخريطة */
     .card-body-grid {
@@ -498,7 +325,7 @@
       align-items: center;
       justify-content: space-between;
       gap: 16px;
-      padding-top: 8px;
+      padding-left: 35px;
     }
 
     .card-details {
@@ -527,13 +354,13 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      background: var(--pill-bg);
-      color: var(--primary-light);
+      background: #f1f5f9;
+      color: var(--primary);
       padding: 5px 12px;
       border-radius: 8px;
       font-size: 0.85rem;
       font-weight: 700;
-      border: 1px solid var(--border-soft);
+      border: 1px solid #e2e8f0;
     }
 
     .route-title {
@@ -545,20 +372,20 @@
       gap: 8px;
     }
 
-    .route-title i.pin { color: var(--primary-light); }
+    .route-title i.pin { color: var(--primary); }
     .route-title i.arrow { color: var(--gold); font-size: 1.1rem; }
 
     .meta-row {
       display: flex;
       align-items: center;
-      gap: 18px;
+      gap: 20px;
       flex-wrap: wrap;
-      background: var(--meta-bg);
+      background: #f8fafc;
       padding: 10px 15px;
       border-radius: 10px;
       font-size: 0.92rem;
       font-weight: 700;
-      color: var(--text-muted);
+      color: #475569;
       margin-bottom: 12px;
     }
 
@@ -572,9 +399,9 @@
 
     .notes-text {
       font-size: 0.92rem;
-      color: var(--notes-text);
-      background: var(--notes-bg);
-      border-inline-end: 3px solid var(--gold);
+      color: #334155;
+      background: #fffbeb;
+      border-right: 3px solid var(--gold);
       padding: 8px 12px;
       border-radius: 6px;
       margin-bottom: 10px;
@@ -605,27 +432,32 @@
       align-items: center;
       justify-content: center;
       gap: 8px;
+      transition: all 0.25s ease;
     }
 
     .reveal-btn {
       background: linear-gradient(180deg, #475569 0%, #1e293b 100%);
       color: #ffffff;
       border: 2px solid #94a3b8;
+      box-shadow: 0 4px 10px rgba(30, 41, 59, 0.2);
     }
 
     .reveal-btn:hover {
       background: linear-gradient(180deg, #64748b 0%, #334155 100%);
+      transform: translateY(-1px);
     }
 
     .whatsapp-btn {
       background: linear-gradient(180deg, #198754 0%, #0f5132 100%);
       color: #ffffff;
       border: 2px solid var(--gold);
+      box-shadow: 0 4px 12px rgba(15, 81, 50, 0.25);
       display: none;
     }
 
     .whatsapp-btn:hover {
       background: linear-gradient(180deg, #20a366 0%, #13663f 100%);
+      transform: translateY(-1px);
     }
 
     /* زر الحذف */
@@ -642,6 +474,7 @@
       align-items: center;
       justify-content: center;
       gap: 6px;
+      transition: all 0.2s ease;
     }
 
     .delete-btn:hover {
@@ -665,7 +498,7 @@
       border: 2px solid var(--gold);
       box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
       display: none;
-      z-index: 1300;
+      z-index: 1000;
       align-items: center;
       gap: 10px;
     }
@@ -685,9 +518,9 @@
       header p { font-size: 0.9rem; }
       .logo-svg-wrap { width: 62px; height: 62px; }
       .header-content { justify-content: flex-start; gap: 12px; }
-      .header-text { text-align: start; }
+      .header-text { text-align: right; }
       .route-title { font-size: 1.15rem; }
-      .card-body-grid { flex-direction: column; align-items: stretch; }
+      .card-body-grid { flex-direction: column; align-items: stretch; padding-left: 0; }
       .card-map-graphic { width: 90px; height: 70px; align-self: flex-end; }
       .delete-btn { width: 100%; }
     }
@@ -697,11 +530,6 @@
 
   <!-- الهيدر العلوي: صورة الخلفية المؤقتة/الجاهزة للاستبدال هي logo.png -->
   <header>
-    <!-- زر الثلاثة خطوط الصغير في أعلى اليسار -->
-    <button type="button" class="menu-toggle-btn" id="menuToggleBtn" onclick="toggleDrawer(true)" aria-label="القائمة">
-      <i class="fa-solid fa-bars"></i>
-    </button>
-
     <div class="header-content">
       <!-- شعار رفيق السفر مدمج (SVG) في الجانب الأيمن -->
       <div class="logo-svg-wrap" title="شعار رفيق السفر">
@@ -727,61 +555,11 @@
       </div>
 
       <div class="header-text">
-        <h1 id="siteTitle">رفيق السفر</h1>
-        <p id="siteSubtitle">منصة ذكية لتسهيل المواصلات بين المدن السودانية</p>
+        <h1>رفيق السفر</h1>
+        <p>منصة ذكية لتسهيل المواصلات بين المدن السودانية</p>
       </div>
     </div>
   </header>
-
-  <!-- خلفية القائمة الجانبية والقائمة -->
-  <div class="drawer-backdrop" id="drawerBackdrop" onclick="toggleDrawer(false)"></div>
-  <aside class="side-drawer" id="sideDrawer" aria-label="القائمة الجانبية">
-    <div class="drawer-header">
-      <div class="drawer-title">
-        <i class="fa-solid fa-compass"></i>
-        <span id="drawerTitleText">القائمة</span>
-      </div>
-      <button type="button" class="drawer-close-btn" onclick="toggleDrawer(false)" aria-label="إغلاق">
-        <i class="fa-solid fa-xmark"></i>
-      </button>
-    </div>
-
-    <!-- خيار الترجمة -->
-    <button type="button" class="drawer-item-btn" onclick="toggleLanguage()">
-      <span class="drawer-item-left">
-        <i class="fa-solid fa-language"></i>
-        <span id="translateLabel">الترجمة</span>
-      </span>
-      <span class="drawer-badge" id="langBadge">English</span>
-    </button>
-
-    <!-- خيار اللون الداكن -->
-    <button type="button" class="drawer-item-btn" onclick="toggleDarkMode()">
-      <span class="drawer-item-left">
-        <i class="fa-solid fa-moon" id="darkIcon"></i>
-        <span id="darkModeLabel">اللون الداكن</span>
-      </span>
-      <span class="drawer-badge" id="darkBadge">إيقاف</span>
-    </button>
-
-    <!-- خيار مساعدة -->
-    <button type="button" class="drawer-item-btn" onclick="toggleHelpBox()">
-      <span class="drawer-item-left">
-        <i class="fa-solid fa-circle-question"></i>
-        <span id="helpLabel">مساعدة</span>
-      </span>
-      <span class="drawer-badge" id="helpBadge"><i class="fa-solid fa-chevron-down"></i></span>
-    </button>
-
-    <div class="help-box" id="helpBox">
-      <strong id="helpHeading">كيفية استخدام رفيق السفر:</strong>
-      <ul id="helpList">
-        <li>اختر (سائق) لعرض المقاعد المتاحة أو (مسافر) لطلب مقعد.</li>
-        <li>أدخل مدينة الانطلاق والوصول والتاريخ ثم اضغط "نشر الإعلان".</li>
-        <li>اضغط "إظهار الرقم" لكشف رقم الهاتف والانتقال إلى واتساب.</li>
-      </ul>
-    </div>
-  </aside>
 
   <div id="toast"></div>
 
@@ -790,7 +568,7 @@
     <section class="form-section">
       <div class="section-title">
         <span class="icon-box"><i class="fa-solid fa-plus"></i></span>
-        <span id="formSectionTitle">أضف إعلانك الآن</span>
+        <span>أضف إعلانك الآن</span>
       </div>
 
       <form id="tripForm">
@@ -798,7 +576,7 @@
           <div class="field-card">
             <div class="field-header">
               <i class="fa-solid fa-car-side"></i>
-              <span id="adTypeLabel">نوع الإعلان</span>
+              <span>نوع الإعلان</span>
             </div>
             <div class="input-wrapper">
               <select id="type" required onchange="toggleFields()">
@@ -813,7 +591,7 @@
           <div class="field-card">
             <div class="field-header">
               <i class="fa-solid fa-location-dot"></i>
-              <span id="fromLabel">من (الولاية/المدينة)</span>
+              <span>من (الولاية/المدينة)</span>
             </div>
             <div class="input-wrapper">
               <input type="text" id="from" placeholder="مثال: الخرطوم" required>
@@ -824,7 +602,7 @@
           <div class="field-card">
             <div class="field-header">
               <i class="fa-solid fa-location-crosshairs"></i>
-              <span id="toLabel">إلى (الولاية/المدينة)</span>
+              <span>إلى (الولاية/المدينة)</span>
             </div>
             <div class="input-wrapper">
               <input type="text" id="to" placeholder="مثال: مدني" required>
@@ -837,7 +615,7 @@
           <div class="field-card">
             <div class="field-header">
               <i class="fa-regular fa-calendar-days"></i>
-              <span id="dateLabel">تاريخ الرحلة</span>
+              <span>تاريخ الرحلة</span>
             </div>
             <div class="input-wrapper">
               <input type="date" id="date" required>
@@ -851,7 +629,7 @@
             <div class="field-card">
               <div class="field-header">
                 <i class="fa-solid fa-chair"></i>
-                <span id="seatsLabel">عدد المقاعد</span>
+                <span>عدد المقاعد</span>
               </div>
               <div class="input-wrapper">
                 <input type="number" id="seats" min="1" max="20" value="1" required>
@@ -861,7 +639,7 @@
             <div class="field-card">
               <div class="field-header">
                 <i class="fa-solid fa-coins"></i>
-                <span id="costLabel">نوع الرحلة</span>
+                <span>نوع الرحلة</span>
               </div>
               <div class="input-wrapper">
                 <select id="cost">
@@ -874,7 +652,7 @@
             <div class="field-card">
               <div class="field-header">
                 <i class="fa-solid fa-tag"></i>
-                <span id="priceLabel">السعر (اختياري)</span>
+                <span>السعر (اختياري)</span>
               </div>
               <div class="input-wrapper">
                 <input type="text" id="price" placeholder="مثال: 5000 ج.س">
@@ -887,7 +665,7 @@
           <div class="field-card">
             <div class="field-header">
               <i class="fa-brands fa-whatsapp" style="color: #25d366; font-size: 1.1rem;"></i>
-              <span id="phoneLabel">رقم التواصل (واتساب)</span>
+              <span>رقم التواصل (واتساب)</span>
             </div>
             <div class="input-wrapper">
               <input type="tel" id="phone" placeholder="249xxxxxxxxx أو 09xxxxxxxx" required>
@@ -898,7 +676,7 @@
           <div class="field-card">
             <div class="field-header">
               <i class="fa-solid fa-pen-to-square"></i>
-              <span id="notesLabel">ملاحظات (اختياري)</span>
+              <span>ملاحظات (اختياري)</span>
             </div>
             <div class="input-wrapper">
               <input type="text" id="notes" placeholder="مثال: الانطلاق صباحاً">
@@ -909,7 +687,7 @@
 
         <button type="submit" class="submit-btn" id="submitBtn">
           <i class="fa-solid fa-paper-plane"></i>
-          <span id="submitBtnText">نشر الإعلان</span>
+          <span>نشر الإعلان</span>
         </button>
       </form>
     </section>
@@ -918,241 +696,13 @@
     <section class="list-section">
       <div class="list-header">
         <i class="fa-solid fa-clipboard-list"></i>
-        <span id="tripsSectionTitle">الرحلات المتاحة</span>
+        <span>الرحلات المتاحة</span>
       </div>
       <div id="tripsList" class="trips-list">
-        <p id="loadingPlaceholder" style="text-align:center; color:#888; padding: 20px;">جارٍ تحميل الرحلات...</p>
+        <p style="text-align:center; color:#888; padding: 20px;">جارٍ تحميل الرحلات...</p>
       </div>
     </section>
   </main>
-
-  <script>
-    // إدارة القائمة الجانبية والترجمة واللون الداكن والمساعدة
-    let currentLang = localStorage.getItem("rafiq_lang") || "ar";
-    let latestTripsCache = null;
-
-    const i18n = {
-      ar: {
-        htmlLang: "ar",
-        dir: "rtl",
-        title: "رفيق السفر - منصة مواصلات السودان",
-        siteTitle: "رفيق السفر",
-        siteSubtitle: "منصة ذكية لتسهيل المواصلات بين المدن السودانية",
-        menuAria: "القائمة",
-        closeAria: "إغلاق",
-        drawerTitle: "القائمة",
-        translateLabel: "الترجمة",
-        langBadge: "English",
-        darkModeLabel: "اللون الداكن",
-        darkOn: "تشغيل",
-        darkOff: "إيقاف",
-        helpLabel: "مساعدة",
-        helpHeading: "كيفية استخدام رفيق السفر:",
-        helpItems: [
-          "اختر (سائق) لعرض المقاعد المتاحة أو (مسافر) لطلب مقعد.",
-          "أدخل مدينة الانطلاق والوصول والتاريخ ثم اضغط \"نشر الإعلان\".",
-          "اضغط \"إظهار الرقم\" لكشف رقم الهاتف والانتقال إلى واتساب."
-        ],
-        formSectionTitle: "أضف إعلانك الآن",
-        adTypeLabel: "نوع الإعلان",
-        offerOpt: "لدي مقاعد خالية (سائق)",
-        requestOpt: "أبحث عن مقعد (مسافر)",
-        fromLabel: "من (الولاية/المدينة)",
-        fromPh: "مثال: الخرطوم",
-        toLabel: "إلى (الولاية/المدينة)",
-        toPh: "مثال: مدني",
-        dateLabel: "تاريخ الرحلة",
-        seatsLabel: "عدد المقاعد",
-        costLabel: "نوع الرحلة",
-        freeOpt: "مجاناً",
-        paidOpt: "بمقابل مادي",
-        priceLabel: "السعر (اختياري)",
-        pricePh: "مثال: 5000 ج.س",
-        phoneLabel: "رقم التواصل (واتساب)",
-        phonePh: "249xxxxxxxxx أو 09xxxxxxxx",
-        notesLabel: "ملاحظات (اختياري)",
-        notesPh: "مثال: الانطلاق صباحاً",
-        submitBtnText: "نشر الإعلان",
-        publishingText: "جارٍ النشر...",
-        tripsSectionTitle: "الرحلات المتاحة",
-        loadingTrips: "جارٍ تحميل الرحلات...",
-        noTrips: "لا توجد رحلات متاحة حالياً.",
-        passengerBadge: "مسافر",
-        freeBadge: "مجاناً",
-        paidBadge: "بمقابل",
-        hasSeatsPill: "لدي مقاعد خالية",
-        needSeatPill: "أبحث عن مقعد",
-        seatUnit: "مقعد",
-        revealPhone: "إظهار الرقم",
-        whatsappBtn: "تواصل واتساب",
-        deleteBtn: "حذف",
-        confirmDelete: "هل أنت متأكد من حذف هذا الإعلان؟",
-        deletedSuccess: "تم حذف الإعلان بنجاح",
-        deleteError: "فشل حذف الإعلان",
-        publishedSuccess: "تم نشر الإعلان بنجاح!",
-        publishError: "حدث خطأ أثناء النشر",
-        langChangedMsg: "تم التبديل إلى العربية"
-      },
-      en: {
-        htmlLang: "en",
-        dir: "ltr",
-        title: "Travel Companion - Sudan Transport Platform",
-        siteTitle: "Travel Companion",
-        siteSubtitle: "Smart platform for intercity rides across Sudan",
-        menuAria: "Menu",
-        closeAria: "Close",
-        drawerTitle: "Menu",
-        translateLabel: "Translation",
-        langBadge: "العربية",
-        darkModeLabel: "Dark Mode",
-        darkOn: "ON",
-        darkOff: "OFF",
-        helpLabel: "Help",
-        helpHeading: "How to use Travel Companion:",
-        helpItems: [
-          "Select (Driver) to offer empty seats or (Passenger) to request a seat.",
-          "Enter origin, destination, and date, then click \"Post Ad\".",
-          "Click \"Show Number\" to reveal the phone number and open WhatsApp."
-        ],
-        formSectionTitle: "Post Your Ad Now",
-        adTypeLabel: "Ad Type",
-        offerOpt: "Available Seats (Driver)",
-        requestOpt: "Looking for a Seat (Passenger)",
-        fromLabel: "From (State/City)",
-        fromPh: "e.g., Khartoum",
-        toLabel: "To (State/City)",
-        toPh: "e.g., Madani",
-        dateLabel: "Trip Date",
-        seatsLabel: "Seats Count",
-        costLabel: "Trip Cost",
-        freeOpt: "Free",
-        paidOpt: "Paid",
-        priceLabel: "Price (Optional)",
-        pricePh: "e.g., 5000 SDG",
-        phoneLabel: "Contact Number (WhatsApp)",
-        phonePh: "249xxxxxxxxx or 09xxxxxxxx",
-        notesLabel: "Notes (Optional)",
-        notesPh: "e.g., Morning departure",
-        submitBtnText: "Post Ad",
-        publishingText: "Publishing...",
-        tripsSectionTitle: "Available Trips",
-        loadingTrips: "Loading trips...",
-        noTrips: "No trips available right now.",
-        passengerBadge: "Passenger",
-        freeBadge: "Free",
-        paidBadge: "Paid",
-        hasSeatsPill: "Available Seats",
-        needSeatPill: "Looking for Seat",
-        seatUnit: "seats",
-        revealPhone: "Show Number",
-        whatsappBtn: "WhatsApp",
-        deleteBtn: "Delete",
-        confirmDelete: "Are you sure you want to delete this ad?",
-        deletedSuccess: "Ad deleted successfully",
-        deleteError: "Failed to delete ad",
-        publishedSuccess: "Ad published successfully!",
-        publishError: "Error while publishing ad",
-        langChangedMsg: "Switched to English"
-      }
-    };
-
-    window.toggleDrawer = (open) => {
-      document.getElementById("sideDrawer").classList.toggle("open", open);
-      document.getElementById("drawerBackdrop").classList.toggle("open", open);
-    };
-
-    window.toggleHelpBox = () => {
-      const box = document.getElementById("helpBox");
-      const badge = document.getElementById("helpBadge");
-      const isOpen = box.classList.toggle("show");
-      badge.innerHTML = isOpen
-        ? '<i class="fa-solid fa-chevron-up"></i>'
-        : '<i class="fa-solid fa-chevron-down"></i>';
-    };
-
-    function updateDarkBadge() {
-      const isDark = document.body.classList.contains("dark-mode");
-      const dict = i18n[currentLang];
-      document.getElementById("darkBadge").textContent = isDark ? dict.darkOn : dict.darkOff;
-      document.getElementById("darkIcon").className = isDark ? "fa-solid fa-sun" : "fa-solid fa-moon";
-    }
-
-    window.toggleDarkMode = () => {
-      document.body.classList.toggle("dark-mode");
-      localStorage.setItem("rafiq_dark", document.body.classList.contains("dark-mode") ? "1" : "0");
-      updateDarkBadge();
-    };
-
-    function applyLanguage(lang, notify = false) {
-      currentLang = lang === "en" ? "en" : "ar";
-      localStorage.setItem("rafiq_lang", currentLang);
-      const dict = i18n[currentLang];
-
-      document.documentElement.lang = dict.htmlLang;
-      document.documentElement.dir = dict.dir;
-      document.title = dict.title;
-
-      document.getElementById("menuToggleBtn").setAttribute("aria-label", dict.menuAria);
-      document.querySelector(".drawer-close-btn").setAttribute("aria-label", dict.closeAria);
-      document.getElementById("siteTitle").textContent = dict.siteTitle;
-      document.getElementById("siteSubtitle").textContent = dict.siteSubtitle;
-      document.getElementById("drawerTitleText").textContent = dict.drawerTitle;
-      document.getElementById("translateLabel").textContent = dict.translateLabel;
-      document.getElementById("langBadge").textContent = dict.langBadge;
-      document.getElementById("darkModeLabel").textContent = dict.darkModeLabel;
-      document.getElementById("helpLabel").textContent = dict.helpLabel;
-      document.getElementById("helpHeading").textContent = dict.helpHeading;
-      document.getElementById("helpList").innerHTML = dict.helpItems.map(item => `<li>${item}</li>`).join("");
-
-      document.getElementById("formSectionTitle").textContent = dict.formSectionTitle;
-      document.getElementById("adTypeLabel").textContent = dict.adTypeLabel;
-
-      const typeSelect = document.getElementById("type");
-      typeSelect.options[0].text = dict.offerOpt;
-      typeSelect.options[1].text = dict.requestOpt;
-
-      document.getElementById("fromLabel").textContent = dict.fromLabel;
-      document.getElementById("from").placeholder = dict.fromPh;
-      document.getElementById("toLabel").textContent = dict.toLabel;
-      document.getElementById("to").placeholder = dict.toPh;
-      document.getElementById("dateLabel").textContent = dict.dateLabel;
-      document.getElementById("seatsLabel").textContent = dict.seatsLabel;
-      document.getElementById("costLabel").textContent = dict.costLabel;
-
-      const costSelect = document.getElementById("cost");
-      costSelect.options[0].text = dict.freeOpt;
-      costSelect.options[1].text = dict.paidOpt;
-
-      document.getElementById("priceLabel").textContent = dict.priceLabel;
-      document.getElementById("price").placeholder = dict.pricePh;
-      document.getElementById("phoneLabel").textContent = dict.phoneLabel;
-      document.getElementById("phone").placeholder = dict.phonePh;
-      document.getElementById("notesLabel").textContent = dict.notesLabel;
-      document.getElementById("notes").placeholder = dict.notesPh;
-      document.getElementById("submitBtnText").textContent = dict.submitBtnText;
-      document.getElementById("tripsSectionTitle").textContent = dict.tripsSectionTitle;
-
-      const loadingEl = document.getElementById("loadingPlaceholder");
-      if (loadingEl) loadingEl.textContent = dict.loadingTrips;
-
-      updateDarkBadge();
-      if (typeof window.renderTripsList === "function") {
-        window.renderTripsList(latestTripsCache);
-      }
-      if (notify && typeof window.showToast === "function") {
-        window.showToast(dict.langChangedMsg);
-      }
-    }
-
-    window.toggleLanguage = () => {
-      applyLanguage(currentLang === "ar" ? "en" : "ar", true);
-    };
-
-    if (localStorage.getItem("rafiq_dark") === "1") {
-      document.body.classList.add("dark-mode");
-    }
-    applyLanguage(currentLang, false);
-  </script>
 
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
@@ -1215,7 +765,6 @@
       toast.style.display = "flex";
       setTimeout(() => { toast.style.display = "none"; }, 3500);
     }
-    window.showToast = showToast;
 
     // إظهار/إخفاء حقول السائق
     window.toggleFields = () => {
@@ -1234,13 +783,12 @@
 
     // دالة حذف الإعلان من Firebase
     window.deleteTrip = async (id) => {
-      const dict = i18n[currentLang] || i18n.ar;
-      if (!confirm(dict.confirmDelete)) return;
+      if (!confirm("هل أنت متأكد من حذف هذا الإعلان؟")) return;
       try {
         await deleteDoc(doc(db, "trips", id));
-        showToast(dict.deletedSuccess);
+        showToast("تم حذف الإعلان بنجاح");
       } catch (err) {
-        showToast(dict.deleteError, "error");
+        showToast("فشل حذف الإعلان", "error");
       }
     };
 
@@ -1250,10 +798,9 @@
     // إرسال الاستمارة
     document.getElementById("tripForm").addEventListener("submit", async (e) => {
       e.preventDefault();
-      const dict = i18n[currentLang] || i18n.ar;
       const btn = document.getElementById("submitBtn");
       btn.disabled = true;
-      btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> <span>${dict.publishingText}</span>`;
+      btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> <span>جارٍ النشر...</span>';
 
       const type = document.getElementById("type").value;
       const isDriver = type === "offer";
@@ -1274,45 +821,38 @@
 
       try {
         await addDoc(tripsRef, trip);
-        showToast(dict.publishedSuccess);
+        showToast("تم نشر الإعلان بنجاح!");
         document.getElementById("tripForm").reset();
         toggleFields();
       } catch (err) {
-        showToast(dict.publishError, "error");
+        showToast("حدث خطأ أثناء النشر", "error");
       } finally {
         btn.disabled = false;
-        btn.innerHTML = `<i class="fa-solid fa-paper-plane"></i> <span id="submitBtnText">${dict.submitBtnText}</span>`;
+        btn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> <span>نشر الإعلان</span>';
       }
     });
 
     // عرض الرحلات
-    function renderTripsList(trips) {
-      const dict = i18n[currentLang] || i18n.ar;
+    const q = query(tripsRef, orderBy("createdAt", "desc"));
+    onSnapshot(q, (snapshot) => {
+      const today = getLocalToday();
+      const trips = snapshot.docs.map(d => ({ id: d.id, ...d.data() })).filter(t => t.date >= today);
+
       const list = document.getElementById("tripsList");
-
-      if (trips === null) {
-        list.innerHTML = `<p id="loadingPlaceholder" style="text-align:center; color:#888; padding: 20px;">${dict.loadingTrips}</p>`;
-        return;
-      }
-
       if (trips.length === 0) {
-        list.innerHTML = `<p style="text-align:center; color:#888; padding: 20px;">${dict.noTrips}</p>`;
+        list.innerHTML = '<p style="text-align:center; color:#888; padding: 20px;">لا توجد رحلات متاحة حالياً.</p>';
         return;
       }
-
-      const arrowIcon = currentLang === "en" ? "fa-arrow-right" : "fa-arrow-left";
 
       list.innerHTML = trips.map(t => {
         const isDriver = t.type === "offer";
-        const badgeClass = !isDriver ? "req" : (t.cost === "free" ? "free" : "paid");
-        const badgeText = !isDriver
-          ? dict.passengerBadge
-          : (t.cost === "free" ? dict.freeBadge : (t.price ? t.price : dict.paidBadge));
+        const ribbonClass = !isDriver ? "req" : (t.cost === "free" ? "free" : "paid");
+        const ribbonText = !isDriver ? "مسافر" : (t.cost === "free" ? "مجاناً" : (t.price ? t.price : "بمقابل"));
         const hiddenPhone = t.phone.length > 6 ? t.phone.slice(0, 6) + "***" + t.phone.slice(-2) : t.phone;
 
         return `
           <div class="trip-card ${isDriver ? 'offer' : 'request'}">
-            <div class="status-corner-badge ${badgeClass}">${badgeText}</div>
+            <div class="ribbon ${ribbonClass}">${ribbonText}</div>
 
             <div class="card-body-grid">
               <div class="card-details">
@@ -1320,19 +860,19 @@
                   <div class="route-title">
                     <i class="fa-solid fa-location-dot pin"></i>
                     <span>${t.from}</span>
-                    <i class="fa-solid ${arrowIcon} arrow"></i>
+                    <i class="fa-solid fa-arrow-left arrow"></i>
                     <span>${t.to}</span>
                   </div>
 
                   <span class="type-pill">
                     <i class="fa-solid ${isDriver ? 'fa-car' : 'fa-person-walking-luggage'}"></i>
-                    ${isDriver ? dict.hasSeatsPill : dict.needSeatPill}
+                    ${isDriver ? 'لدي مقاعد خالية' : 'أبحث عن مقعد'}
                   </span>
                 </div>
 
                 <div class="meta-row">
                   <span><i class="fa-regular fa-calendar-check"></i> ${t.date}</span>
-                  ${isDriver ? `<span><i class="fa-solid fa-chair"></i> ${t.seats} ${dict.seatUnit}</span>` : ""}
+                  ${isDriver ? `<span><i class="fa-solid fa-chair"></i> ${t.seats} مقعد</span>` : ""}
                 </div>
 
                 ${t.notes ? `
@@ -1352,28 +892,19 @@
             <div class="card-actions">
               <button class="btn-action reveal-btn" onclick="this.nextElementSibling.style.display='inline-flex'; this.style.display='none';">
                 <i class="fa-solid fa-eye"></i>
-                <span>${dict.revealPhone} (${hiddenPhone})</span>
+                <span>إظهار الرقم (${hiddenPhone})</span>
               </button>
               <a class="btn-action whatsapp-btn" target="_blank" href="https://wa.me/${t.phone.replace(/[^0-9]/g, "")}">
                 <i class="fa-brands fa-whatsapp" style="font-size: 1.2rem;"></i>
-                <span>${dict.whatsappBtn}</span>
+                <span>تواصل واتساب</span>
               </a>
-              <button class="delete-btn" onclick="deleteTrip('${t.id}')" title="${dict.deleteBtn}">
+              <button class="delete-btn" onclick="deleteTrip('${t.id}')" title="حذف الإعلان">
                 <i class="fa-solid fa-trash-can"></i>
-                <span>${dict.deleteBtn}</span>
+                <span>حذف</span>
               </button>
             </div>
           </div>`;
       }).join("");
-    }
-    window.renderTripsList = renderTripsList;
-
-    const q = query(tripsRef, orderBy("createdAt", "desc"));
-    onSnapshot(q, (snapshot) => {
-      const today = getLocalToday();
-      const trips = snapshot.docs.map(d => ({ id: d.id, ...d.data() })).filter(t => t.date >= today);
-      latestTripsCache = trips;
-      renderTripsList(trips);
     });
   </script>
 </body>
