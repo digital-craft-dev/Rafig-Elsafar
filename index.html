@@ -17,7 +17,34 @@
       --card-bg: #ffffff;
       --input-bg: #f4f6f5;
       --text-main: #1e293b;
+      --text-muted: #475569;
+      --border-soft: #e2e8f0;
+      --border-input: #cbd5e1;
+      --meta-bg: #f8fafc;
+      --pill-bg: #f1f5f9;
+      --notes-bg: #fffbeb;
+      --notes-text: #334155;
+      --driver-bg: linear-gradient(to left, #f8faf9, #eef5f1);
+      --driver-border: #d1e7dd;
+      --drawer-bg: #ffffff;
       --danger: #dc2626;
+    }
+
+    body.dark-mode {
+      --bg-page: #0b1410;
+      --card-bg: #13221b;
+      --input-bg: #1a2e24;
+      --text-main: #f1f5f9;
+      --text-muted: #cbd5e1;
+      --border-soft: #243d31;
+      --border-input: #2f4f40;
+      --meta-bg: #182a21;
+      --pill-bg: #1d3328;
+      --notes-bg: rgba(212, 175, 55, 0.12);
+      --notes-text: #f8fafc;
+      --driver-bg: linear-gradient(to left, #15261e, #1b3127);
+      --driver-border: #284638;
+      --drawer-bg: #111f18;
     }
 
     * {
@@ -32,6 +59,7 @@
       color: var(--text-main);
       line-height: 1.6;
       padding-bottom: 60px;
+      transition: background-color 0.25s ease, color 0.25s ease;
     }
 
     /* الهيدر العلوي: ارتفاع مضغوط (180px - 220px)، خلفية صورة logo.png مع تدرج يتلاشى من اليمين لليسار */
@@ -60,10 +88,38 @@
       margin: 0 auto;
       display: flex;
       align-items: center;
-      justify-content: flex-start;
+      justify-content: space-between;
       gap: 16px;
       position: relative;
       z-index: 2;
+    }
+
+    .header-brand {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .menu-toggle-btn {
+      width: 46px;
+      height: 46px;
+      border-radius: 14px;
+      border: 2px solid var(--gold);
+      background: rgba(6, 51, 29, 0.85);
+      color: #ffffff;
+      font-size: 1.25rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      flex-shrink: 0;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .menu-toggle-btn:hover {
+      background: var(--primary);
+      transform: scale(1.04);
     }
 
     .logo-svg-wrap {
@@ -81,7 +137,7 @@
     }
 
     .header-text {
-      text-align: right;
+      text-align: start;
     }
 
     header h1 {
@@ -99,6 +155,157 @@
       text-shadow: 0 1px 4px rgba(0, 0, 0, 0.55);
     }
 
+    /* القائمة الجانبية (Drawer) */
+    .drawer-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.55);
+      backdrop-filter: blur(2px);
+      z-index: 1100;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.25s ease, visibility 0.25s ease;
+    }
+
+    .drawer-backdrop.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .side-drawer {
+      position: fixed;
+      top: 0;
+      inset-inline-start: 0;
+      width: 300px;
+      max-width: 85vw;
+      height: 100vh;
+      background: var(--drawer-bg);
+      color: var(--text-main);
+      z-index: 1200;
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.35);
+      border-inline-end: 3px solid var(--gold);
+      padding: 22px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      transform: translateX(100%);
+      transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.25s ease, color 0.25s ease;
+    }
+
+    html[dir="ltr"] .side-drawer {
+      transform: translateX(-100%);
+    }
+
+    .side-drawer.open {
+      transform: translateX(0);
+    }
+
+    .drawer-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 14px;
+      border-bottom: 2px solid var(--border-soft);
+    }
+
+    .drawer-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--primary-light);
+    }
+
+    .drawer-close-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      border: 1px solid var(--border-soft);
+      background: var(--input-bg);
+      color: var(--text-main);
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .drawer-item-btn {
+      width: 100%;
+      padding: 13px 14px;
+      border-radius: 14px;
+      border: 1px solid var(--border-soft);
+      background: var(--input-bg);
+      color: var(--text-main);
+      font-size: 0.98rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .drawer-item-btn:hover {
+      border-color: var(--primary-light);
+      transform: translateY(-1px);
+    }
+
+    .drawer-item-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .drawer-item-left i {
+      width: 32px;
+      height: 32px;
+      border-radius: 9px;
+      background: rgba(25, 135, 84, 0.14);
+      color: var(--primary-light);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+    }
+
+    .drawer-badge {
+      font-size: 0.8rem;
+      font-weight: 800;
+      padding: 3px 9px;
+      border-radius: 20px;
+      background: rgba(212, 175, 55, 0.18);
+      color: var(--gold);
+      border: 1px solid rgba(212, 175, 55, 0.35);
+    }
+
+    .help-box {
+      margin-top: 4px;
+      padding: 14px;
+      border-radius: 14px;
+      background: var(--notes-bg);
+      border: 1px solid rgba(212, 175, 55, 0.35);
+      color: var(--notes-text);
+      font-size: 0.9rem;
+      line-height: 1.65;
+      display: none;
+    }
+
+    .help-box.show {
+      display: block;
+    }
+
+    .help-box ul {
+      padding-inline-start: 18px;
+      margin-top: 6px;
+    }
+
+    .help-box li {
+      margin-bottom: 6px;
+    }
+
     main {
       max-width: 850px;
       margin: -16px auto 20px;
@@ -114,7 +321,8 @@
       padding: 25px;
       margin-bottom: 25px;
       box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
-      border: 1px solid rgba(0, 0, 0, 0.04);
+      border: 1px solid var(--border-soft);
+      transition: background-color 0.25s ease, border-color 0.25s ease;
     }
 
     .section-title {
@@ -122,14 +330,14 @@
       align-items: center;
       justify-content: center;
       gap: 10px;
-      color: var(--primary);
+      color: var(--primary-light);
       margin-bottom: 22px;
       font-size: 1.5rem;
       font-weight: 800;
     }
 
     .section-title .icon-box {
-      background: #e6f4ea;
+      background: rgba(25, 135, 84, 0.14);
       color: var(--primary-light);
       width: 38px;
       height: 38px;
@@ -152,14 +360,14 @@
       flex: 1;
       min-width: 240px;
       background: var(--input-bg);
-      border: 1px solid #e2e8f0;
+      border: 1px solid var(--border-soft);
       border-radius: 14px;
       padding: 12px 15px;
       transition: all 0.25s ease;
     }
 
     .field-card:focus-within {
-      background: #ffffff;
+      background: var(--card-bg);
       border-color: var(--primary-light);
       box-shadow: 0 0 0 3px rgba(25, 135, 84, 0.12);
     }
@@ -187,7 +395,7 @@
 
     .input-wrapper i.inner-icon {
       position: absolute;
-      left: 12px;
+      inset-inline-end: 12px;
       color: #94a3b8;
       font-size: 0.95rem;
       pointer-events: none;
@@ -196,12 +404,12 @@
     .field-card input, .field-card select {
       width: 100%;
       padding: 10px 12px;
-      padding-left: 35px;
-      border: 1px solid #cbd5e1;
+      padding-inline-end: 35px;
+      border: 1px solid var(--border-input);
       border-radius: 10px;
       font-size: 0.98rem;
       font-weight: 600;
-      background: #ffffff;
+      background: var(--card-bg);
       color: var(--text-main);
       transition: 0.2s;
     }
@@ -213,8 +421,8 @@
 
     /* صندوق حقول السائق */
     .driver-box {
-      background: linear-gradient(to left, #f8faf9, #eef5f1);
-      border: 1px solid #d1e7dd;
+      background: var(--driver-bg);
+      border: 1px solid var(--driver-border);
       border-radius: 16px;
       padding: 15px;
       margin-bottom: 15px;
@@ -225,7 +433,7 @@
     }
 
     .driver-box .field-card {
-      background: #ffffff;
+      background: var(--card-bg);
       min-width: 180px;
     }
 
@@ -261,12 +469,12 @@
       display: flex;
       align-items: center;
       gap: 10px;
-      color: var(--primary);
+      color: var(--primary-light);
       font-size: 1.35rem;
       font-weight: 800;
       margin-bottom: 20px;
       padding-bottom: 12px;
-      border-bottom: 2px solid #f1f5f9;
+      border-bottom: 2px solid var(--border-soft);
     }
 
     .trips-list {
@@ -276,8 +484,8 @@
     }
 
     .trip-card {
-      background: #ffffff;
-      border: 1px solid #e2e8f0;
+      background: var(--card-bg);
+      border: 1px solid var(--border-soft);
       border-radius: 18px;
       padding: 20px 22px;
       position: relative;
@@ -292,18 +500,18 @@
     }
 
     .trip-card.offer {
-      border-right: 6px solid var(--primary-light);
+      border-inline-end: 6px solid var(--primary-light);
     }
 
     .trip-card.request {
-      border-right: 6px solid #f59e0b;
+      border-inline-end: 6px solid #f59e0b;
     }
 
     /* الشريط المائل */
     .ribbon {
       position: absolute;
       top: 16px;
-      left: -34px;
+      inset-inline-start: -34px;
       width: 130px;
       text-align: center;
       transform: rotate(-45deg);
@@ -313,6 +521,10 @@
       color: #fff;
       box-shadow: 0 2px 6px rgba(0,0,0,0.15);
       z-index: 2;
+    }
+
+    html[dir="ltr"] .ribbon {
+      transform: rotate(45deg);
     }
 
     .ribbon.free { background: linear-gradient(90deg, #198754, #20c997); }
@@ -325,7 +537,7 @@
       align-items: center;
       justify-content: space-between;
       gap: 16px;
-      padding-left: 35px;
+      padding-inline-start: 35px;
     }
 
     .card-details {
@@ -354,13 +566,13 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      background: #f1f5f9;
-      color: var(--primary);
+      background: var(--pill-bg);
+      color: var(--primary-light);
       padding: 5px 12px;
       border-radius: 8px;
       font-size: 0.85rem;
       font-weight: 700;
-      border: 1px solid #e2e8f0;
+      border: 1px solid var(--border-soft);
     }
 
     .route-title {
@@ -372,7 +584,7 @@
       gap: 8px;
     }
 
-    .route-title i.pin { color: var(--primary); }
+    .route-title i.pin { color: var(--primary-light); }
     .route-title i.arrow { color: var(--gold); font-size: 1.1rem; }
 
     .meta-row {
@@ -380,12 +592,12 @@
       align-items: center;
       gap: 20px;
       flex-wrap: wrap;
-      background: #f8fafc;
+      background: var(--meta-bg);
       padding: 10px 15px;
       border-radius: 10px;
       font-size: 0.92rem;
       font-weight: 700;
-      color: #475569;
+      color: var(--text-muted);
       margin-bottom: 12px;
     }
 
@@ -399,9 +611,9 @@
 
     .notes-text {
       font-size: 0.92rem;
-      color: #334155;
-      background: #fffbeb;
-      border-right: 3px solid var(--gold);
+      color: var(--notes-text);
+      background: var(--notes-bg);
+      border-inline-end: 3px solid var(--gold);
       padding: 8px 12px;
       border-radius: 6px;
       margin-bottom: 10px;
@@ -498,7 +710,7 @@
       border: 2px solid var(--gold);
       box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
       display: none;
-      z-index: 1000;
+      z-index: 1300;
       align-items: center;
       gap: 10px;
     }
@@ -516,11 +728,11 @@
       }
       header h1 { font-size: 1.65rem; }
       header p { font-size: 0.9rem; }
+      .menu-toggle-btn { width: 40px; height: 40px; font-size: 1.1rem; border-radius: 12px; }
       .logo-svg-wrap { width: 62px; height: 62px; }
-      .header-content { justify-content: flex-start; gap: 12px; }
-      .header-text { text-align: right; }
+      .header-brand { gap: 12px; }
       .route-title { font-size: 1.15rem; }
-      .card-body-grid { flex-direction: column; align-items: stretch; padding-left: 0; }
+      .card-body-grid { flex-direction: column; align-items: stretch; padding-inline-start: 0; }
       .card-map-graphic { width: 90px; height: 70px; align-self: flex-end; }
       .delete-btn { width: 100%; }
     }
@@ -531,35 +743,92 @@
   <!-- الهيدر العلوي: صورة الخلفية المؤقتة/الجاهزة للاستبدال هي logo.png -->
   <header>
     <div class="header-content">
-      <!-- شعار رفيق السفر مدمج (SVG) في الجانب الأيمن -->
-      <div class="logo-svg-wrap" title="شعار رفيق السفر">
-        <svg viewBox="0 0 120 120" width="68" height="68" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stop-color="#0a4a2b"/>
-              <stop offset="100%" stop-color="#042414"/>
-            </linearGradient>
-            <linearGradient id="goldGrad" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stop-color="#f3e5ab"/>
-              <stop offset="50%" stop-color="#d4af37"/>
-              <stop offset="100%" stop-color="#aa7c11"/>
-            </linearGradient>
-          </defs>
-          <circle cx="60" cy="60" r="58" fill="url(#bgGrad)"/>
-          <path d="M 35 105 Q 55 70 85 52 L 94 56 Q 68 76 58 105 Z" fill="#1e293b"/>
-          <path d="M 46 105 Q 61 73 89 54" stroke="#ffffff" stroke-width="2.5" stroke-dasharray="6,5" fill="none"/>
-          <path d="M 22 45 Q 52 22 82 36 Q 62 31 38 42 Z" fill="url(#goldGrad)"/>
-          <path d="M 88 22 C 79 22 73 28 73 36 C 73 47 88 60 88 60 C 88 60 103 47 103 36 C 103 28 97 22 88 22 Z" fill="url(#goldGrad)"/>
-          <circle cx="88" cy="36" r="5.5" fill="#06331d"/>
-        </svg>
+      <div class="header-brand">
+        <!-- شعار رفيق السفر مدمج (SVG) في الجانب الأيمن -->
+        <div class="logo-svg-wrap" title="شعار رفيق السفر">
+          <svg viewBox="0 0 120 120" width="68" height="68" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#0a4a2b"/>
+                <stop offset="100%" stop-color="#042414"/>
+              </linearGradient>
+              <linearGradient id="goldGrad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#f3e5ab"/>
+                <stop offset="50%" stop-color="#d4af37"/>
+                <stop offset="100%" stop-color="#aa7c11"/>
+              </linearGradient>
+            </defs>
+            <circle cx="60" cy="60" r="58" fill="url(#bgGrad)"/>
+            <path d="M 35 105 Q 55 70 85 52 L 94 56 Q 68 76 58 105 Z" fill="#1e293b"/>
+            <path d="M 46 105 Q 61 73 89 54" stroke="#ffffff" stroke-width="2.5" stroke-dasharray="6,5" fill="none"/>
+            <path d="M 22 45 Q 52 22 82 36 Q 62 31 38 42 Z" fill="url(#goldGrad)"/>
+            <path d="M 88 22 C 79 22 73 28 73 36 C 73 47 88 60 88 60 C 88 60 103 47 103 36 C 103 28 97 22 88 22 Z" fill="url(#goldGrad)"/>
+            <circle cx="88" cy="36" r="5.5" fill="#06331d"/>
+          </svg>
+        </div>
+
+        <div class="header-text">
+          <h1 id="siteTitle">رفيق السفر</h1>
+          <p id="siteSubtitle">منصة ذكية لتسهيل المواصلات بين المدن السودانية</p>
+        </div>
       </div>
 
-      <div class="header-text">
-        <h1>رفيق السفر</h1>
-        <p>منصة ذكية لتسهيل المواصلات بين المدن السودانية</p>
-      </div>
+      <!-- زر الثلاثة خطوط لفتح القائمة الجانبية -->
+      <button type="button" class="menu-toggle-btn" id="menuToggleBtn" onclick="toggleDrawer(true)" aria-label="القائمة">
+        <i class="fa-solid fa-bars"></i>
+      </button>
     </div>
   </header>
+
+  <!-- خلفية القائمة الجانبية والقائمة -->
+  <div class="drawer-backdrop" id="drawerBackdrop" onclick="toggleDrawer(false)"></div>
+  <aside class="side-drawer" id="sideDrawer" aria-label="القائمة الجانبية">
+    <div class="drawer-header">
+      <div class="drawer-title">
+        <i class="fa-solid fa-compass"></i>
+        <span id="drawerTitleText">القائمة</span>
+      </div>
+      <button type="button" class="drawer-close-btn" onclick="toggleDrawer(false)" aria-label="إغلاق">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
+    <!-- خيار الترجمة -->
+    <button type="button" class="drawer-item-btn" onclick="toggleLanguage()">
+      <span class="drawer-item-left">
+        <i class="fa-solid fa-language"></i>
+        <span id="translateLabel">الترجمة</span>
+      </span>
+      <span class="drawer-badge" id="langBadge">EN</span>
+    </button>
+
+    <!-- خيار اللون الداكن -->
+    <button type="button" class="drawer-item-btn" onclick="toggleDarkMode()">
+      <span class="drawer-item-left">
+        <i class="fa-solid fa-moon" id="darkIcon"></i>
+        <span id="darkModeLabel">اللون الداكن</span>
+      </span>
+      <span class="drawer-badge" id="darkBadge">إيقاف</span>
+    </button>
+
+    <!-- خيار مساعدة -->
+    <button type="button" class="drawer-item-btn" onclick="toggleHelpBox()">
+      <span class="drawer-item-left">
+        <i class="fa-solid fa-circle-question"></i>
+        <span id="helpLabel">مساعدة</span>
+      </span>
+      <span class="drawer-badge" id="helpBadge"><i class="fa-solid fa-chevron-down"></i></span>
+    </button>
+
+    <div class="help-box" id="helpBox">
+      <strong id="helpHeading">كيفية استخدام رفيق السفر:</strong>
+      <ul id="helpList">
+        <li>اختر (سائق) لعرض المقاعد المتاحة أو (مسافر) لطلب مقعد.</li>
+        <li>أدخل مدينة الانطلاق والوصول والتاريخ ثم اضغط "نشر الإعلان".</li>
+        <li>اضغط "إظهار الرقم" لكشف رقم الهاتف والانتقال إلى واتساب.</li>
+      </ul>
+    </div>
+  </aside>
 
   <div id="toast"></div>
 
@@ -568,7 +837,7 @@
     <section class="form-section">
       <div class="section-title">
         <span class="icon-box"><i class="fa-solid fa-plus"></i></span>
-        <span>أضف إعلانك الآن</span>
+        <span id="formSectionTitle">أضف إعلانك الآن</span>
       </div>
 
       <form id="tripForm">
@@ -576,7 +845,7 @@
           <div class="field-card">
             <div class="field-header">
               <i class="fa-solid fa-car-side"></i>
-              <span>نوع الإعلان</span>
+              <span id="adTypeLabel">نوع الإعلان</span>
             </div>
             <div class="input-wrapper">
               <select id="type" required onchange="toggleFields()">
@@ -591,7 +860,7 @@
           <div class="field-card">
             <div class="field-header">
               <i class="fa-solid fa-location-dot"></i>
-              <span>من (الولاية/المدينة)</span>
+              <span id="fromLabel">من (الولاية/المدينة)</span>
             </div>
             <div class="input-wrapper">
               <input type="text" id="from" placeholder="مثال: الخرطوم" required>
@@ -602,7 +871,7 @@
           <div class="field-card">
             <div class="field-header">
               <i class="fa-solid fa-location-crosshairs"></i>
-              <span>إلى (الولاية/المدينة)</span>
+              <span id="toLabel">إلى (الولاية/المدينة)</span>
             </div>
             <div class="input-wrapper">
               <input type="text" id="to" placeholder="مثال: مدني" required>
@@ -615,7 +884,7 @@
           <div class="field-card">
             <div class="field-header">
               <i class="fa-regular fa-calendar-days"></i>
-              <span>تاريخ الرحلة</span>
+              <span id="dateLabel">تاريخ الرحلة</span>
             </div>
             <div class="input-wrapper">
               <input type="date" id="date" required>
@@ -629,7 +898,7 @@
             <div class="field-card">
               <div class="field-header">
                 <i class="fa-solid fa-chair"></i>
-                <span>عدد المقاعد</span>
+                <span id="seatsLabel">عدد المقاعد</span>
               </div>
               <div class="input-wrapper">
                 <input type="number" id="seats" min="1" max="20" value="1" required>
@@ -639,7 +908,7 @@
             <div class="field-card">
               <div class="field-header">
                 <i class="fa-solid fa-coins"></i>
-                <span>نوع الرحلة</span>
+                <span id="costLabel">نوع الرحلة</span>
               </div>
               <div class="input-wrapper">
                 <select id="cost">
@@ -652,7 +921,7 @@
             <div class="field-card">
               <div class="field-header">
                 <i class="fa-solid fa-tag"></i>
-                <span>السعر (اختياري)</span>
+                <span id="priceLabel">السعر (اختياري)</span>
               </div>
               <div class="input-wrapper">
                 <input type="text" id="price" placeholder="مثال: 5000 ج.س">
@@ -665,7 +934,7 @@
           <div class="field-card">
             <div class="field-header">
               <i class="fa-brands fa-whatsapp" style="color: #25d366; font-size: 1.1rem;"></i>
-              <span>رقم التواصل (واتساب)</span>
+              <span id="phoneLabel">رقم التواصل (واتساب)</span>
             </div>
             <div class="input-wrapper">
               <input type="tel" id="phone" placeholder="249xxxxxxxxx أو 09xxxxxxxx" required>
@@ -676,7 +945,7 @@
           <div class="field-card">
             <div class="field-header">
               <i class="fa-solid fa-pen-to-square"></i>
-              <span>ملاحظات (اختياري)</span>
+              <span id="notesLabel">ملاحظات (اختياري)</span>
             </div>
             <div class="input-wrapper">
               <input type="text" id="notes" placeholder="مثال: الانطلاق صباحاً">
@@ -687,7 +956,7 @@
 
         <button type="submit" class="submit-btn" id="submitBtn">
           <i class="fa-solid fa-paper-plane"></i>
-          <span>نشر الإعلان</span>
+          <span id="submitBtnText">نشر الإعلان</span>
         </button>
       </form>
     </section>
@@ -696,13 +965,241 @@
     <section class="list-section">
       <div class="list-header">
         <i class="fa-solid fa-clipboard-list"></i>
-        <span>الرحلات المتاحة</span>
+        <span id="tripsSectionTitle">الرحلات المتاحة</span>
       </div>
       <div id="tripsList" class="trips-list">
         <p style="text-align:center; color:#888; padding: 20px;">جارٍ تحميل الرحلات...</p>
       </div>
     </section>
   </main>
+
+  <script>
+    // إدارة القائمة الجانبية والترجمة واللون الداكن والمساعدة
+    let currentLang = localStorage.getItem("rafiq_lang") || "ar";
+    let latestTripsCache = [];
+
+    const i18n = {
+      ar: {
+        htmlLang: "ar",
+        dir: "rtl",
+        title: "رفيق السفر - منصة مواصلات السودان",
+        siteTitle: "رفيق السفر",
+        siteSubtitle: "منصة ذكية لتسهيل المواصلات بين المدن السودانية",
+        drawerTitle: "القائمة",
+        translateLabel: "الترجمة",
+        langBadge: "EN",
+        darkModeLabel: "اللون الداكن",
+        darkOn: "تشغيل",
+        darkOff: "إيقاف",
+        helpLabel: "مساعدة",
+        helpHeading: "كيفية استخدام رفيق السفر:",
+        helpItems: [
+          "اختر (سائق) لعرض المقاعد المتاحة أو (مسافر) لطلب مقعد.",
+          "أدخل مدينة الانطلاق والوصول والتاريخ ثم اضغط \"نشر الإعلان\".",
+          "اضغط \"إظهار الرقم\" لكشف رقم الهاتف والانتقال إلى واتساب."
+        ],
+        formSectionTitle: "أضف إعلانك الآن",
+        adTypeLabel: "نوع الإعلان",
+        offerOpt: "لدي مقاعد خالية (سائق)",
+        requestOpt: "أبحث عن مقعد (مسافر)",
+        fromLabel: "من (الولاية/المدينة)",
+        fromPh: "مثال: الخرطوم",
+        toLabel: "إلى (الولاية/المدينة)",
+        toPh: "مثال: مدني",
+        dateLabel: "تاريخ الرحلة",
+        seatsLabel: "عدد المقاعد",
+        costLabel: "نوع الرحلة",
+        freeOpt: "مجاناً",
+        paidOpt: "بمقابل مادي",
+        priceLabel: "السعر (اختياري)",
+        pricePh: "مثال: 5000 ج.س",
+        phoneLabel: "رقم التواصل (واتساب)",
+        phonePh: "249xxxxxxxxx أو 09xxxxxxxx",
+        notesLabel: "ملاحظات (اختياري)",
+        notesPh: "مثال: الانطلاق صباحاً",
+        submitBtnText: "نشر الإعلان",
+        publishingText: "جارٍ النشر...",
+        tripsSectionTitle: "الرحلات المتاحة",
+        loadingTrips: "جارٍ تحميل الرحلات...",
+        noTrips: "لا توجد رحلات متاحة حالياً.",
+        passengerRibbon: "مسافر",
+        freeRibbon: "مجاناً",
+        paidRibbon: "بمقابل",
+        hasSeatsPill: "لدي مقاعد خالية",
+        needSeatPill: "أبحث عن مقعد",
+        seatUnit: "مقعد",
+        revealPhone: "إظهار الرقم",
+        whatsappBtn: "تواصل واتساب",
+        deleteBtn: "حذف",
+        confirmDelete: "هل أنت متأكد من حذف هذا الإعلان؟",
+        deletedSuccess: "تم حذف الإعلان بنجاح",
+        deleteError: "فشل حذف الإعلان",
+        publishedSuccess: "تم نشر الإعلان بنجاح!",
+        publishError: "حدث خطأ أثناء النشر",
+        langChangedMsg: "تم التبديل إلى العربية"
+      },
+      en: {
+        htmlLang: "en",
+        dir: "ltr",
+        title: "Travel Companion - Sudan Transport Platform",
+        siteTitle: "Travel Companion",
+        siteSubtitle: "Smart platform for intercity rides across Sudan",
+        drawerTitle: "Menu",
+        translateLabel: "Translation",
+        langBadge: "AR",
+        darkModeLabel: "Dark Mode",
+        darkOn: "ON",
+        darkOff: "OFF",
+        helpLabel: "Help",
+        helpHeading: "How to use Travel Companion:",
+        helpItems: [
+          "Select (Driver) to offer empty seats or (Passenger) to request a seat.",
+          "Enter origin, destination, and date, then click \"Post Ad\".",
+          "Click \"Show Number\" to reveal the phone number and open WhatsApp."
+        ],
+        formSectionTitle: "Post Your Ad Now",
+        adTypeLabel: "Ad Type",
+        offerOpt: "Available Seats (Driver)",
+        requestOpt: "Looking for a Seat (Passenger)",
+        fromLabel: "From (State/City)",
+        fromPh: "e.g., Khartoum",
+        toLabel: "To (State/City)",
+        toPh: "e.g., Madani",
+        dateLabel: "Trip Date",
+        seatsLabel: "Seats Count",
+        costLabel: "Trip Cost",
+        freeOpt: "Free",
+        paidOpt: "Paid",
+        priceLabel: "Price (Optional)",
+        pricePh: "e.g., 5000 SDG",
+        phoneLabel: "Contact Number (WhatsApp)",
+        phonePh: "249xxxxxxxxx or 09xxxxxxxx",
+        notesLabel: "Notes (Optional)",
+        notesPh: "e.g., Morning departure",
+        submitBtnText: "Post Ad",
+        publishingText: "Publishing...",
+        tripsSectionTitle: "Available Trips",
+        loadingTrips: "Loading trips...",
+        noTrips: "No trips available right now.",
+        passengerRibbon: "Passenger",
+        freeRibbon: "Free",
+        paidRibbon: "Paid",
+        hasSeatsPill: "Available Seats",
+        needSeatPill: "Looking for Seat",
+        seatUnit: "seats",
+        revealPhone: "Show Number",
+        whatsappBtn: "WhatsApp",
+        deleteBtn: "Delete",
+        confirmDelete: "Are you sure you want to delete this ad?",
+        deletedSuccess: "Ad deleted successfully",
+        deleteError: "Failed to delete ad",
+        publishedSuccess: "Ad published successfully!",
+        publishError: "Error while publishing ad",
+        langChangedMsg: "Switched to English"
+      }
+    };
+
+    window.toggleDrawer = (open) => {
+      const drawer = document.getElementById("sideDrawer");
+      const backdrop = document.getElementById("drawerBackdrop");
+      if (open) {
+        drawer.classList.add("open");
+        backdrop.classList.add("open");
+      } else {
+        drawer.classList.remove("open");
+        backdrop.classList.remove("open");
+      }
+    };
+
+    window.toggleHelpBox = () => {
+      const box = document.getElementById("helpBox");
+      const badge = document.getElementById("helpBadge");
+      const isOpen = box.classList.toggle("show");
+      badge.innerHTML = isOpen
+        ? '<i class="fa-solid fa-chevron-up"></i>'
+        : '<i class="fa-solid fa-chevron-down"></i>';
+    };
+
+    function updateDarkBadge() {
+      const isDark = document.body.classList.contains("dark-mode");
+      const dict = i18n[currentLang];
+      const badge = document.getElementById("darkBadge");
+      const icon = document.getElementById("darkIcon");
+      if (badge) badge.textContent = isDark ? dict.darkOn : dict.darkOff;
+      if (icon) icon.className = isDark ? "fa-solid fa-sun" : "fa-solid fa-moon";
+    }
+
+    window.toggleDarkMode = () => {
+      document.body.classList.toggle("dark-mode");
+      localStorage.setItem("rafiq_dark", document.body.classList.contains("dark-mode") ? "1" : "0");
+      updateDarkBadge();
+    };
+
+    function applyLanguage(lang, notify = false) {
+      currentLang = lang === "en" ? "en" : "ar";
+      localStorage.setItem("rafiq_lang", currentLang);
+      const dict = i18n[currentLang];
+
+      document.documentElement.lang = dict.htmlLang;
+      document.documentElement.dir = dict.dir;
+      document.title = dict.title;
+
+      document.getElementById("siteTitle").textContent = dict.siteTitle;
+      document.getElementById("siteSubtitle").textContent = dict.siteSubtitle;
+      document.getElementById("drawerTitleText").textContent = dict.drawerTitle;
+      document.getElementById("translateLabel").textContent = dict.translateLabel;
+      document.getElementById("langBadge").textContent = dict.langBadge;
+      document.getElementById("darkModeLabel").textContent = dict.darkModeLabel;
+      document.getElementById("helpLabel").textContent = dict.helpLabel;
+      document.getElementById("helpHeading").textContent = dict.helpHeading;
+      document.getElementById("helpList").innerHTML = dict.helpItems.map(item => `<li>${item}</li>`).join("");
+
+      document.getElementById("formSectionTitle").textContent = dict.formSectionTitle;
+      document.getElementById("adTypeLabel").textContent = dict.adTypeLabel;
+
+      const typeSelect = document.getElementById("type");
+      typeSelect.options[0].text = dict.offerOpt;
+      typeSelect.options[1].text = dict.requestOpt;
+
+      document.getElementById("fromLabel").textContent = dict.fromLabel;
+      document.getElementById("from").placeholder = dict.fromPh;
+      document.getElementById("toLabel").textContent = dict.toLabel;
+      document.getElementById("to").placeholder = dict.toPh;
+      document.getElementById("dateLabel").textContent = dict.dateLabel;
+      document.getElementById("seatsLabel").textContent = dict.seatsLabel;
+      document.getElementById("costLabel").textContent = dict.costLabel;
+
+      const costSelect = document.getElementById("cost");
+      costSelect.options[0].text = dict.freeOpt;
+      costSelect.options[1].text = dict.paidOpt;
+
+      document.getElementById("priceLabel").textContent = dict.priceLabel;
+      document.getElementById("price").placeholder = dict.pricePh;
+      document.getElementById("phoneLabel").textContent = dict.phoneLabel;
+      document.getElementById("phone").placeholder = dict.phonePh;
+      document.getElementById("notesLabel").textContent = dict.notesLabel;
+      document.getElementById("notes").placeholder = dict.notesPh;
+      document.getElementById("submitBtnText").textContent = dict.submitBtnText;
+      document.getElementById("tripsSectionTitle").textContent = dict.tripsSectionTitle;
+
+      updateDarkBadge();
+      if (typeof window.renderTripsList === "function") {
+        window.renderTripsList(latestTripsCache);
+      }
+      if (notify && typeof window.showToast === "function") {
+        window.showToast(dict.langChangedMsg);
+      }
+    }
+
+    window.toggleLanguage = () => {
+      applyLanguage(currentLang === "ar" ? "en" : "ar", true);
+    };
+
+    if (localStorage.getItem("rafiq_dark") === "1") {
+      document.body.classList.add("dark-mode");
+    }
+    applyLanguage(currentLang, false);
+  </script>
 
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
@@ -765,6 +1262,7 @@
       toast.style.display = "flex";
       setTimeout(() => { toast.style.display = "none"; }, 3500);
     }
+    window.showToast = showToast;
 
     // إظهار/إخفاء حقول السائق
     window.toggleFields = () => {
@@ -783,12 +1281,13 @@
 
     // دالة حذف الإعلان من Firebase
     window.deleteTrip = async (id) => {
-      if (!confirm("هل أنت متأكد من حذف هذا الإعلان؟")) return;
+      const dict = i18n[currentLang] || i18n.ar;
+      if (!confirm(dict.confirmDelete)) return;
       try {
         await deleteDoc(doc(db, "trips", id));
-        showToast("تم حذف الإعلان بنجاح");
+        showToast(dict.deletedSuccess);
       } catch (err) {
-        showToast("فشل حذف الإعلان", "error");
+        showToast(dict.deleteError, "error");
       }
     };
 
@@ -798,9 +1297,10 @@
     // إرسال الاستمارة
     document.getElementById("tripForm").addEventListener("submit", async (e) => {
       e.preventDefault();
+      const dict = i18n[currentLang] || i18n.ar;
       const btn = document.getElementById("submitBtn");
       btn.disabled = true;
-      btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> <span>جارٍ النشر...</span>';
+      btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> <span>${dict.publishingText}</span>`;
 
       const type = document.getElementById("type").value;
       const isDriver = type === "offer";
@@ -821,33 +1321,34 @@
 
       try {
         await addDoc(tripsRef, trip);
-        showToast("تم نشر الإعلان بنجاح!");
+        showToast(dict.publishedSuccess);
         document.getElementById("tripForm").reset();
         toggleFields();
       } catch (err) {
-        showToast("حدث خطأ أثناء النشر", "error");
+        showToast(dict.publishError, "error");
       } finally {
         btn.disabled = false;
-        btn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> <span>نشر الإعلان</span>';
+        btn.innerHTML = `<i class="fa-solid fa-paper-plane"></i> <span id="submitBtnText">${dict.submitBtnText}</span>`;
       }
     });
 
     // عرض الرحلات
-    const q = query(tripsRef, orderBy("createdAt", "desc"));
-    onSnapshot(q, (snapshot) => {
-      const today = getLocalToday();
-      const trips = snapshot.docs.map(d => ({ id: d.id, ...d.data() })).filter(t => t.date >= today);
-
+    function renderTripsList(trips) {
+      const dict = i18n[currentLang] || i18n.ar;
+      const arrowIcon = currentLang === "en" ? "fa-arrow-right" : "fa-arrow-left";
       const list = document.getElementById("tripsList");
-      if (trips.length === 0) {
-        list.innerHTML = '<p style="text-align:center; color:#888; padding: 20px;">لا توجد رحلات متاحة حالياً.</p>';
+
+      if (!trips || trips.length === 0) {
+        list.innerHTML = `<p style="text-align:center; color:#888; padding: 20px;">${dict.noTrips}</p>`;
         return;
       }
 
       list.innerHTML = trips.map(t => {
         const isDriver = t.type === "offer";
         const ribbonClass = !isDriver ? "req" : (t.cost === "free" ? "free" : "paid");
-        const ribbonText = !isDriver ? "مسافر" : (t.cost === "free" ? "مجاناً" : (t.price ? t.price : "بمقابل"));
+        const ribbonText = !isDriver
+          ? dict.passengerRibbon
+          : (t.cost === "free" ? dict.freeRibbon : (t.price ? t.price : dict.paidRibbon));
         const hiddenPhone = t.phone.length > 6 ? t.phone.slice(0, 6) + "***" + t.phone.slice(-2) : t.phone;
 
         return `
@@ -860,19 +1361,19 @@
                   <div class="route-title">
                     <i class="fa-solid fa-location-dot pin"></i>
                     <span>${t.from}</span>
-                    <i class="fa-solid fa-arrow-left arrow"></i>
+                    <i class="fa-solid ${arrowIcon} arrow"></i>
                     <span>${t.to}</span>
                   </div>
 
                   <span class="type-pill">
                     <i class="fa-solid ${isDriver ? 'fa-car' : 'fa-person-walking-luggage'}"></i>
-                    ${isDriver ? 'لدي مقاعد خالية' : 'أبحث عن مقعد'}
+                    ${isDriver ? dict.hasSeatsPill : dict.needSeatPill}
                   </span>
                 </div>
 
                 <div class="meta-row">
                   <span><i class="fa-regular fa-calendar-check"></i> ${t.date}</span>
-                  ${isDriver ? `<span><i class="fa-solid fa-chair"></i> ${t.seats} مقعد</span>` : ""}
+                  ${isDriver ? `<span><i class="fa-solid fa-chair"></i> ${t.seats} ${dict.seatUnit}</span>` : ""}
                 </div>
 
                 ${t.notes ? `
@@ -892,19 +1393,28 @@
             <div class="card-actions">
               <button class="btn-action reveal-btn" onclick="this.nextElementSibling.style.display='inline-flex'; this.style.display='none';">
                 <i class="fa-solid fa-eye"></i>
-                <span>إظهار الرقم (${hiddenPhone})</span>
+                <span>${dict.revealPhone} (${hiddenPhone})</span>
               </button>
               <a class="btn-action whatsapp-btn" target="_blank" href="https://wa.me/${t.phone.replace(/[^0-9]/g, "")}">
                 <i class="fa-brands fa-whatsapp" style="font-size: 1.2rem;"></i>
-                <span>تواصل واتساب</span>
+                <span>${dict.whatsappBtn}</span>
               </a>
-              <button class="delete-btn" onclick="deleteTrip('${t.id}')" title="حذف الإعلان">
+              <button class="delete-btn" onclick="deleteTrip('${t.id}')" title="${dict.deleteBtn}">
                 <i class="fa-solid fa-trash-can"></i>
-                <span>حذف</span>
+                <span>${dict.deleteBtn}</span>
               </button>
             </div>
           </div>`;
       }).join("");
+    }
+    window.renderTripsList = renderTripsList;
+
+    const q = query(tripsRef, orderBy("createdAt", "desc"));
+    onSnapshot(q, (snapshot) => {
+      const today = getLocalToday();
+      const trips = snapshot.docs.map(d => ({ id: d.id, ...d.data() })).filter(t => t.date >= today);
+      latestTripsCache = trips;
+      renderTripsList(trips);
     });
   </script>
 </body>
